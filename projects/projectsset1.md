@@ -70,6 +70,7 @@ setInterval(() => {
 },1000)
 ```
 
+## Project 4
 ```javascript
 let randomNumber = parseInt(Math.random() * 100 + 1);
 
