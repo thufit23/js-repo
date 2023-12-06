@@ -1,5 +1,6 @@
 ## Project 1
-```const buttons = document.querySelectorAll('.button');
+```javascript
+const buttons = document.querySelectorAll('.button');
 const body = document.querySelector('body');
 buttons.forEach( (button) => {
   console.log(button);
@@ -28,7 +29,7 @@ buttons.forEach( (button) => {
 });
 ```
 ## Project 2
-```
+```javascript
 const form = document.querySelector('form')
 form.addEventListener('submit',function(e) {
   e.preventDefault();
@@ -57,4 +58,14 @@ form.addEventListener('submit',function(e) {
   }
 })
 
+```
+
+## Project 3
+
+```javascript
+const clock = document.getElementById('clock')
+setInterval(() => {
+  let date = new Date()
+  clock.innerHTML = date.toLocaleTimeString()
+},1000)
 ```
