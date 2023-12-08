@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="background-color: #212121;">
+  <div id="pfp"></div>
+  <div id="follow_count"></div>
+  <div id="get-info">
+    <br>
+    <br>
+    <button id="click1">Click me to get profile picture</button>
+    <br>
+    <br>
+    <button id="click2">Click me to get follower count</button>
+</div>
+</body>
+<script>
+  const xhr = new XMLHttpRequest();
+  const requestURL = 'https://api.github.com/users/thufit23'
+  let data;
+  xhr.open('GET',requestURL)
+  xhr.onreadystatechange = function() {
+    console.log(xhr.readyState)
+    if(xhr.readyState === 4) {
+        data = JSON.parse(this.responseText);
+        console.log(data)
+        console.log(data["public_repos"])
+    }
+  }
+  xhr.send();
+document.getElementById('click1').addEventListener('click',function() {
+    const image = document.createElement('img');
+    image.src = data["avatar_url"]
+    document.getElementById('pfp').appendChild(image)
+})
+document.getElementById('click2').addEventListener('click',function() {
+    const h1_elem = document.createElement('h1');
+    h1_elem.style.color = "orange"
+    h1_elem.innerHTML = `Followers count of ${data["login"]}: ${data["followers"]}`
+    document.getElementById('follow_count').appendChild(h1_elem)
+})
+</script>
+</html>
